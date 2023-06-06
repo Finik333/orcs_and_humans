@@ -1,4 +1,6 @@
 #include <iostream>
+#include<windows.h>
+#include <stdio.h>
 using namespace std;
 class you {
 public:
@@ -10,26 +12,13 @@ public:
     int power;
     int hp;
 };
-void print_line() {
-    int i, i1, i2, i3, i4;
-    cout << " " << endl;
-    for (i = 0; i < 100; i++) {
-        cout << "#";
-    } for (i4 = 0; i4 < 25; i4++) {
-        cout << "#" << endl;
-        for (i1 = 0; i1 < 1; i1++) {
-            cout << "#";
-        }
-        for (i3 = 0; i3 < 99; i3++) {
-            cout << " ";
-
-        }
-    }
-}
 int main() {
     setlocale(0, "rus");
+    system("mode con cols=160 lines=45");
+    for (int i=0; i < 65; i++) {
+        cout << " ";
+    }
     cout << "ОРКИ И ЛЮДИ" << endl;
-    print_line();
     you human;
     human.power = 35;
     human.hp = 150;
@@ -43,11 +32,21 @@ int main() {
     orcs baby;
     baby.power = 10;
     baby.hp = 35;
-    if (i3 == 10)
-        if (i4 == 5)
-            cout << "ваша сила " << human.power << endl;
-    cout << "ваше здоровье " << human.hp;
+            cout << "Ваша сила: " << human.power << endl;
+    cout << "Ваше здоровье: " << human.hp << endl;
     srand(time(NULL));
     int resoult = 1 + rand() % 3;
+    cout << "Вы вышли из дома в поисках приключий, и на вашем пути попался";
+    switch (resoult) {
+    case 1: cout << " страшный враг маг орк" << endl;
+        cout << "Сила мага: " << mag.power << endl;
+        cout << "Здоровье мага: " << mag.hp;
+    case 2: cout << " страшный враг громила орк" << endl;
+        cout << "Сила громилы: " << strongman.power << endl;
+        cout << "Здоровье громилы: " << strongman.hp;
+    case 3: cout << " страшный враг мелкий орк" << endl;
+        cout << "Сила мелкого орка: " << baby.power << endl;
+        cout << "Здоровье мелкого орка: " << baby.hp;
+    }
     return 0;
 }
