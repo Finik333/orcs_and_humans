@@ -52,6 +52,22 @@ int main() {
             cout << "Вы атакавали магу и сняли ему 35 единиц здоровья" << endl;
             mag.hp = mag.hp - human.power;
             cout << "Здоровье мага: " << mag.hp << endl;
+            if (vr == 1) {
+                srand(time(NULL));
+                int v = 1 + rand() % 3;
+                switch (v) {
+                case 1: 
+                    cout << "Враг вас успешно атаковкал" << endl;
+                    human.hp = human.hp - mag.power;
+                    cout << "Здаровье:" << human.hp;
+                case 2:
+                    cout << "Враг успешно сбежал" << endl;
+                case 3:
+                    cout << "Враг рискнул сбежать и за это он получил по морде" << endl;
+                    mag.hp = mag.hp - human.power;
+                    cout << "Здоровье мага: " << mag.hp << endl;
+                }
+            }
         }
         else {
             srand(time(NULL));
@@ -77,6 +93,22 @@ int main() {
             cout << "Вы атакавали громилу и сняли ему 35 единиц здоровья" << endl;
             strongman.hp = strongman.hp - human.power;
             cout << "Здоровье : " << strongman.hp << endl;
+            if (vr == 1) {
+                srand(time(NULL));
+                int v = 1 + rand() % 3;
+                switch (v) {
+                case 1:
+                    cout << "Враг вас успешно атаковкал" << endl;
+                    human.hp = human.hp - strongman.power;
+                    cout << "Здаровье:" << human.hp;
+                case 2:
+                    cout << "Враг успешно сбежал" << endl;
+                case 3:
+                    cout << "Враг рискнул сбежать и за это он получил по морде" << endl;
+                    strongman.hp = strongman.hp - human.power;
+                    cout << "Здоровье громилы: " << strongman.hp << endl;
+                }
+            }
         }
         else {
             srand(time(NULL));
@@ -102,6 +134,22 @@ int main() {
             cout << "Вы атакавали мелкого и сняли ему 35 единиц здоровья" << endl;
             baby.hp = baby.hp - human.power;
             cout << "Здоровье мелкого: " << baby.hp << endl;
+            if (vr == 1) {
+                srand(time(NULL));
+                int v = 1 + rand() % 3;
+                switch (v) {
+                case 1:
+                    cout << "Враг вас успешно атаковкал" << endl;
+                    human.hp = human.hp - baby.power;
+                    cout << "Здаровье:" << human.hp;
+                case 2:
+                    cout << "Враг успешно сбежал" << endl;
+                case 3:
+                    cout << "Враг рискнул сбежать и за это он получил по морде" << endl;
+                    baby.hp = baby.hp - human.power;
+                    cout << "Здоровье мелкого: " << baby.hp << endl;
+                }
+            }
         }
         else {
             srand(time(NULL));
