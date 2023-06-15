@@ -41,11 +41,13 @@ __pycache__/
 *.zip
 
 .idea/
+.vs/
 .vscode/
 cmake-build-*/
 build/
 _build/
 _build_*/
 
+out/
 x64/
 Win32/

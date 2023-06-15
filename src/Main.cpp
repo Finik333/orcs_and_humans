@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stdio.h>
 
 using namespace std;
 
@@ -22,51 +21,56 @@ public:
 };
 
 int main() {
-    setlocale(0, "rus");
-    system("mode con cols=160 lines=45");
+#if defined(_MSC_VER)
+    wcerr.imbue(locale(".866"));
+    wcout.imbue(locale(".866"));
+    wcin.imbue(locale(".866"));
+#else
+    wcerr.imbue(locale("ru_RU.UTF-8"));
+    wcout.imbue(locale("ru_RU.UTF-8"));
+    wcin.imbue(locale("ru_RU.UTF-8"));
+#endif
+
     int vr;
-    for (int i = 0; i < 65; i++) {
-        cout << " ";
-    }
-    cout << "ОРКИ И ЛЮДИ" << endl;
+    wcout << L"-----[ ОРКИ И ЛЮДИ ]-----" << endl;
     You human(35, 150);
 
     Orc mag(35, 75);
     Orc strongman(25, 100);
     Orc baby(10, 35);
 
-    cout << "Ваша сила: " << human.power << endl;
-    cout << "Ваше здоровье: " << human.hp << endl;
+    wcout << L"Ваша сила: " << human.power << endl;
+    wcout << L"Ваше здоровье: " << human.hp << endl;
     srand(time(NULL));
     int resoult = 1 + rand() % 3;
-    cout << "Вы вышли из дома в поисках приключий, и на вашем пути попался";
+    wcout << L"Вы вышли из дома в поисках приключий, и на вашем пути попался";
     switch (resoult) {
     case 1:
-        cout << " страшный враг маг орк" << endl;
-        cout << "Сила мага: " << mag.power << endl;
-        cout << "Здоровье мага: " << mag.hp << endl;
+        wcout << L" страшный враг маг орк" << endl;
+        wcout << L"Сила мага: " << mag.power << endl;
+        wcout << L"Здоровье мага: " << mag.hp << endl;
         for (int i3 = 0; i3 < 3; i3++) {
-            cout << "Вам нужно решить что делать:1-АТАКА        2-БЕЖАТЬ" << endl;
-            cout << "Ваш выбор:";
-            cin >> vr;
+            wcout << L"Вам нужно решить что делать:1-АТАКА        2-БЕЖАТЬ" << endl;
+            wcout << L"Ваш выбор:";
+            wcin >> vr;
             if (vr == 1) {
-                cout << "Вы атакавали магу и сняли ему 35 единиц здоровья" << endl;
+                wcout << L"Вы атакавали магу и сняли ему 35 единиц здоровья" << endl;
                 mag.hp = mag.hp - human.power;
-                cout << "Здоровье мага: " << mag.hp << endl;
+                wcout << L"Здоровье мага: " << mag.hp << endl;
                 if (vr == 1) {
                     srand(time(NULL));
                     int v = 1 + rand() % 3;
                     switch (v) {
                     case 1:
-                        cout << "Враг вас успешно атаковкал" << endl;
+                        wcout << L"Враг вас успешно атаковкал" << endl;
                         human.hp = human.hp - mag.power;
-                        cout << "Здаровье:" << human.hp;
+                        wcout << L"Здоровье:" << human.hp;
                     case 2:
-                        cout << "Враг успешно сбежал" << endl;
+                        wcout << L"Враг успешно сбежал" << endl;
                     case 3:
-                        cout << "Враг рискнул сбежать и за это он получил по морде" << endl;
+                        wcout << L"Враг рискнул сбежать и за это он получил по морде" << endl;
                         mag.hp = mag.hp - human.power;
-                        cout << "Здоровье мага: " << mag.hp << endl;
+                        wcout << L"Здоровье мага: " << mag.hp << endl;
                     }
                 }
             }
@@ -74,42 +78,42 @@ int main() {
                 srand(time(NULL));
                 int p = 1 + rand() % 2;
                 if (p == 1) {
-                    cout << "Вам удалось сбежать";
+                    wcout << L"Вам удалось сбежать";
                 }
                 else {
-                    cout << "Вам не удалось сбежать и вас атаковал враг" << endl;
+                    wcout << L"Вам не удалось сбежать и вас атаковал враг" << endl;
                     human.hp = human.hp - mag.power;
-                    cout << "Здаровье:" << human.hp;
+                    wcout << L"Здоровье:" << human.hp;
                 }
             }
             break;
         }
     case 2:
-        cout << " страшный враг громила орк" << endl;
-        cout << "Сила громилы: " << strongman.power << endl;
-        cout << "Здоровье громилы: " << strongman.hp << endl;
+        wcout << L" страшный враг громила орк" << endl;
+        wcout << L"Сила громилы: " << strongman.power << endl;
+        wcout << L"Здоровье громилы: " << strongman.hp << endl;
         for (int i2 = 0; i2 < 3; i2++) {
-            cout << "Вам нужно решить что делать:1-АТАКА        2-БЕЖАТЬ" << endl;
-            cout << "Ваш выбор:";
-            cin >> vr;
+            wcout << L"Вам нужно решить что делать:1-АТАКА        2-БЕЖАТЬ" << endl;
+            wcout << L"Ваш выбор:";
+            wcin >> vr;
             if (vr == 1) {
-                cout << "Вы атакавали громилу и сняли ему 35 единиц здоровья" << endl;
+                wcout << L"Вы атакавали громилу и сняли ему 35 единиц здоровья" << endl;
                 strongman.hp = strongman.hp - human.power;
-                cout << "Здоровье : " << strongman.hp << endl;
+                wcout << L"Здоровье : " << strongman.hp << endl;
                 if (vr == 1) {
                     srand(time(NULL));
                     int v = 1 + rand() % 3;
                     switch (v) {
                     case 1:
-                        cout << "Враг вас успешно атаковкал" << endl;
+                        wcout << L"Враг вас успешно атаковкал" << endl;
                         human.hp = human.hp - strongman.power;
-                        cout << "Здаровье:" << human.hp;
+                        wcout << L"Здоровье:" << human.hp;
                     case 2:
-                        cout << "Враг успешно сбежал" << endl;
+                        wcout << L"Враг успешно сбежал" << endl;
                     case 3:
-                        cout << "Враг рискнул сбежать и за это он получил по морде" << endl;
+                        wcout << L"Враг рискнул сбежать и за это он получил по морде" << endl;
                         strongman.hp = strongman.hp - human.power;
-                        cout << "Здоровье громилы: " << strongman.hp << endl;
+                        wcout << L"Здоровье громилы: " << strongman.hp << endl;
                     }
                 }
             }
@@ -117,42 +121,42 @@ int main() {
                 srand(time(NULL));
                 int p = 1 + rand() % 2;
                 if (p == 1) {
-                    cout << "Вам удалось сбежать";
+                    wcout << L"Вам удалось сбежать";
                 }
                 else {
-                    cout << "Вам не удалось сбежать и вас атаковал враг" << endl;
+                    wcout << L"Вам не удалось сбежать и вас атаковал враг" << endl;
                     human.hp = human.hp - strongman.power;
-                    cout << "Здаровье:" << human.hp;
+                    wcout << L"Здоровье:" << human.hp;
                 }
             }
             break;
         }
     case 3:
-        cout << " страшный враг мелкий орк" << endl;
-        cout << "Сила мелкого орка: " << baby.power << endl;
-        cout << "Здоровье мелкого орка: " << baby.hp << endl;
+        wcout << L" страшный враг мелкий орк" << endl;
+        wcout << L"Сила мелкого орка: " << baby.power << endl;
+        wcout << L"Здоровье мелкого орка: " << baby.hp << endl;
         for (int i3 = 0; i3 < 3; i3++) {
-            cout << "Вам нужно решить что делать:1-АТАКА        2-БЕЖАТЬ" << endl;
-            cout << "Ваш выбор:";
-            cin >> vr;
+            wcout << L"Вам нужно решить что делать:1-АТАКА        2-БЕЖАТЬ" << endl;
+            wcout << L"Ваш выбор:";
+            wcin >> vr;
             if (vr == 1) {
-                cout << "Вы атакавали мелкого и сняли ему 35 единиц здоровья" << endl;
+                wcout << L"Вы атакавали мелкого и сняли ему 35 единиц здоровья" << endl;
                 baby.hp = baby.hp - human.power;
-                cout << "Здоровье мелкого: " << baby.hp << endl;
+                wcout << L"Здоровье мелкого: " << baby.hp << endl;
                 if (vr == 1) {
                     srand(time(NULL));
                     int v = 1 + rand() % 3;
                     switch (v) {
                     case 1:
-                        cout << "Враг вас успешно атаковкал" << endl;
+                        wcout << L"Враг вас успешно атаковкал" << endl;
                         human.hp = human.hp - baby.power;
-                        cout << "Здаровье:" << human.hp;
+                        wcout << L"Здоровье:" << human.hp;
                     case 2:
-                        cout << "Враг успешно сбежал" << endl;
+                        wcout << L"Враг успешно сбежал" << endl;
                     case 3:
-                        cout << "Враг рискнул сбежать и за это он получил по морде" << endl;
+                        wcout << L"Враг рискнул сбежать и за это он получил по морде" << endl;
                         baby.hp = baby.hp - human.power;
-                        cout << "Здоровье мелкого: " << baby.hp << endl;
+                        wcout << L"Здоровье мелкого: " << baby.hp << endl;
                     }
 
                 }
@@ -161,12 +165,12 @@ int main() {
                 srand(time(NULL));
                 int p = 1 + rand() % 2;
                 if (p == 1) {
-                    cout << "Вам удалось сбежать";
+                    wcout << L"Вам удалось сбежать";
                 }
                 else {
-                    cout << "Вам не удалось сбежать и вас атаковал враг" << endl;
+                    wcout << L"Вам не удалось сбежать и вас атаковал враг" << endl;
                     human.hp = human.hp - baby.power;
-                    cout << "Здаровье:" << human.hp;
+                    wcout << L"Здоровье:" << human.hp;
                 }
             }
             break;

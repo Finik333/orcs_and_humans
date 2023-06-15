@@ -1,10 +1,10 @@
-#  macro force_add_flags(flags_variable flag0 flag1 flag2 ...)
+#  force_add_flags(flags_variable flag0 flag1 flag2 ...)
 #        adds arguments not found in flags_variable to the end.
 #        Does not remove duplicate arguments already existing in flags_variable, be careful!
 #        It also separates arguments that are grouped as a string:
 #          ["-O3 -g"] instead of [-O3 -g].
 #
-macro(force_add_flags FLAG_LIST)
+function(force_add_flags FLAG_LIST)
   set(PARAMETER_LIST ${${FLAG_LIST}})
   separate_arguments(PARAMETER_LIST)
   set(NEW_PARAMETER ${${FLAG_LIST}})
@@ -28,4 +28,4 @@ macro(force_add_flags FLAG_LIST)
 
   endforeach()
   set(${FLAG_LIST} ${NEW_PARAMETER} CACHE STRING "" FORCE)
-endmacro()
+endfunction()

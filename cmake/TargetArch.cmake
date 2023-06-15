@@ -133,3 +133,6 @@ function(target_architecture OUTPUT_VAR)
 
   set(${OUTPUT_VAR} "${ARCH}" PARENT_SCOPE)
 endfunction()
+
+target_architecture(ARCHITECTURE)
+message(STATUS "Arch: ${ARCHITECTURE}")
